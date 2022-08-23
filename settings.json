@@ -1,4 +1,12 @@
 {
   "dbPath": "\\\\wehrle-werk.local\\share\\Data\\DATA\\IT\\temp\\db\\Database.db",
-  "syncTime": 15
+  "syncTime": 15,
+  "powershellPath": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "mdtPath": "C:\\Program Files\\Microsoft Deployment Toolkit\\Bin\\MicrosoftDeploymentToolkit.psd1",
+  "mdtDeploymentShare": "C:\\DeploymentShare",
+  "mdtApplicationFolder": "Additional",
+  "pdqSever": "server3-1.wehrle-werk.local",
+  "domainName": "wehrle-werk.local",
+  "userName": "service01",
+  "password": "Kessel79312!"
 }

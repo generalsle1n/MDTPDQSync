@@ -34,6 +34,8 @@ namespace MDTPDQSync
             while (!stoppingToken.IsCancellationRequested)
             {
                 List<Package> allPackages = getAllPDQPackages();
+                mdtController lol = new mdtController(config);
+                lol.createApplication(allPackages);
                 logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 await Task.Delay(syncTime, stoppingToken);
             }
