@@ -30,14 +30,15 @@ namespace MDTPDQSync
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            
+
             while (!stoppingToken.IsCancellationRequested)
             {
                 List<Package> allPackages = getAllPDQPackages();
                 mdtController lol = new mdtController(config);
+                logger.LogInformation("Start Application sync");
                 lol.createApplication(allPackages);
-                logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                await Task.Delay(syncTime, stoppingToken);
+                logger.LogInformation("Sync finished");
+                await Task.Delay(30000, stoppingToken);
             }
         }
 
@@ -45,7 +46,7 @@ namespace MDTPDQSync
         {
             List<Package> packages = new List<Package>();
 
-            using(DatabaseContext db = new DatabaseContext(config))
+            using (DatabaseContext db = new DatabaseContext(config))
             {
                 packages = db.Packages.Where((singlePackage) => singlePackage.FolderId >= minimalFolderID && !singlePackage.Description.StartsWith(notInMDTPrefix)).ToList();
             }

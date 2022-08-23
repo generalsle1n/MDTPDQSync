@@ -21,9 +21,20 @@ namespace MDTPDQSync
         {
             Process powershell = new Process();
             powershell.StartInfo.FileName = config.GetValue<string>("powershellPath");
+            powershell.StartInfo.CreateNoWindow = true;
+            powershell.StartInfo.RedirectStandardOutput = false;
 
             string powershellScript = createAddAppliactionString(packages);
-            
+            string tempPath = Path.GetTempFileName().Replace(".tmp", ".ps1");
+
+            File.WriteAllText(tempPath, powershellScript);
+
+            powershell.StartInfo.Arguments = ("-File " + $"{tempPath}");
+
+            powershell.Start();
+            powershell.WaitForExit();
+
+            File.Delete(tempPath);
         }
 
         private string createAddAppliactionString(List<Package> applications)
@@ -32,7 +43,7 @@ namespace MDTPDQSync
             script.AppendLine($"Import-Module '{config.GetValue<string>("mdtPath")}'");
             script.AppendLine($"New-PSDrive -Name '{mdtDriveName}' -PSProvider MDTProvider -Root {config.GetValue<string>("mdtDeploymentShare")}");
 
-            foreach(Package app in applications)
+            foreach (Package app in applications)
             {
                 script.AppendLine(createSingleApplicationImportString(app.Name));
             }

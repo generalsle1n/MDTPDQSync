@@ -5,8 +5,8 @@
   "mdtPath": "C:\\Program Files\\Microsoft Deployment Toolkit\\Bin\\MicrosoftDeploymentToolkit.psd1",
   "mdtDeploymentShare": "C:\\DeploymentShare",
   "mdtApplicationFolder": "Additional",
-  "pdqSever": "server3-1.wehrle-werk.local",
-  "domainName": "wehrle-werk.local",
-  "userName": "service01",
-  "password": "Kessel79312!"
+  "pdqSever": "",
+  "domainName": "",
+  "userName": "",
+  "password": ""
 }
