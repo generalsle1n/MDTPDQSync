@@ -46,7 +46,6 @@ namespace MDTPDQSync
             StringBuilder application = new StringBuilder();
             StringBuilder applicationInstall = new StringBuilder();
 
-
             application.Append("Import-MDTApplication ");
             application.Append($@"-Path '{mdtDriveName}:\Applications\{config.GetValue<string>("mdtApplicationFolder")}' ");
             application.Append("-Enable $true ");
@@ -54,7 +53,6 @@ namespace MDTPDQSync
             application.Append($"-ShortName '{applicationName}' ");
             application.Append("-Reboot $false ");
             application.Append("-Hide $false ");
-            //"C:\Program Files (x86)\Admin Arsenal\PDQ Deploy\pdqdeploy.exe" Deploy -Package "LICAD" -Targets %Computername%
 
             applicationInstall.Append("-CommandLine ");
             applicationInstall.Append($"'cmd /c ");
