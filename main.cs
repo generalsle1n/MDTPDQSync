@@ -5,6 +5,10 @@ IHost host = Host.CreateDefaultBuilder(args)
     {
         services.AddHostedService<syncWorker>();
     })
+    .UseWindowsService(options =>
+    {
+        options.ServiceName = "WehrleMDTPDQSync";
+    })
     .Build();
 
 await host.RunAsync();
