@@ -38,7 +38,7 @@ namespace MDTPDQSync
                 logger.LogInformation("Start Application sync");
                 lol.createApplication(allPackages);
                 logger.LogInformation("Sync finished");
-                await Task.Delay(30000, stoppingToken);
+                await Task.Delay(syncTime, stoppingToken);
             }
         }
 
