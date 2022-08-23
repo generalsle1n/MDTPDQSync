@@ -35,6 +35,7 @@ namespace MDTPDQSync
             powershell.WaitForExit();
 
             File.Delete(tempPath);
+            File.Delete(tempPath.Replace(".ps1", ".tmp"));
         }
 
         private string createAddAppliactionString(List<Package> applications)
@@ -43,6 +44,9 @@ namespace MDTPDQSync
             script.AppendLine($"Import-Module '{config.GetValue<string>("mdtPath")}'");
             script.AppendLine($"New-PSDrive -Name '{mdtDriveName}' -PSProvider MDTProvider -Root {config.GetValue<string>("mdtDeploymentShare")}");
 
+            script.AppendLine($@"$existingApps = Get-ChildItem -Path '{mdtDriveName}:\Applications\{config.GetValue<string>("mdtApplicationFolder")}' | ForEach-Object {{$_.Name}}");
+            script.AppendLine($"$existingApps | Foreach-Object {{Remove-Item -Path \"{mdtDriveName}:\\Applications\\{config.GetValue<string>("mdtApplicationFolder")}\\$_\"}}");
+            
             foreach (Package app in applications)
             {
                 script.AppendLine(createSingleApplicationImportString(app.Name));
