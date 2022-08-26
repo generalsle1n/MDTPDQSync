@@ -73,7 +73,7 @@ namespace MDTPDQSync
             applicationInstall.Append($"'cmd /c ");
             applicationInstall.Append(@"%SCRIPTROOT%\psexec.exe ");
             applicationInstall.Append($@"\\{config.GetValue<string>("pdqSever")} ");
-            applicationInstall.Append($@"-u {config.GetValue<string>("domainName")}\{config.GetValue<string>("userName")} ");
+            applicationInstall.Append($@"-u {config.GetValue<string>("domainName")}\{config.GetValue<string>("pdqUserName")} ");
             applicationInstall.Append($"-p {config.GetValue<string>("password")} ");
             applicationInstall.Append("-h -accepteula ");
             applicationInstall.Append('"');
