@@ -9,7 +9,7 @@ This is a simple tool to sync packages from PDQ Deploy to MDT Applications, that
 
 ## Authors
 
-- [@Niels Schuler](https://github.com/wehrleSchuler)
+- [@Niels Schuler](https://github.com/generalsle1n)
 
 
 ## Deployment
