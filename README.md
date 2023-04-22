@@ -4,9 +4,6 @@
 This is a simple tool to sync packages from PDQ Deploy to MDT Applications, that the user can directly specify the apps on the installation process. This application is based on .Net 6 as worker service
 
 
-![WehrleLogo](https://www.wehrle-werk.de/sites/all/themes/wehrle/images/lg_wehrle.png)
-
-
 ## Authors
 
 - [@Niels Schuler](https://github.com/generalsle1n)
